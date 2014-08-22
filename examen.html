@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="artistApp">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
-	<title>Examen</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body ng-controller="artistController">
-	<h1>Examen</h1>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
+    <title>Examen</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body ng-controller="artistController">
+    <div class="container" role="main">
+      <h1>Examen</h1>
 
-	<h3>Agregar Elemento</h3>
-	<form>
-		Caratula: <input type="file" required ng-model="artistData.background_image"><br>
-		Foto de perfil: <input type="file" required ng-model="artistData.profile_image"><br>
-		Genero: <input type="text" required ng-model="artistData.genre"><br>
-		Nombre: <input type="text" required ng-model="artistData.name"><br>
-		<button ng-click="addArtist()">Agregar</button>
-	</form>
+      <h3>Agregar Elemento</h3>
+      <form>
+        Caratula: <input type="file" class="form-control" required onChange="angular.element(this).scope().backgroundFile(this)">
+        Foto de perfil: <input type="file" class="form-control" required onChange="angular.element(this).scope().profileFile(this)">
+        Genero: <input type="text" class="form-control" required ng-model="genre">
+        Nombre: <input type="text" class="form-control" required ng-model="name">
+        <button ng-click="addArtist()">Agregar</button>
+      </form>
 
-	<h3>Todos los elementos</h3>
-	<div ng-repeat="art in artists">
-		{{art.name}}
-	</div>
-
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
-</body>
+      <h3>Todos los elementos</h3>
+      <div class="row">
+        <div class="col-md-1 col-md-offset-2 lead text-info">Identificador</div>
+        <div class="col-md-1 col-md-offset-2 lead text-info">Artista</div>
+      </div>
+      <div ng-repeat="art in artists" class="row">
+        <div class="col-md-1 col-md-offset-2 text-center">{{art.node_id}}</div>
+        <div class="col-md-1 col-md-offset-2 text-center">{{art.name}}</div>
+      </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
